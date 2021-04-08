@@ -3,6 +3,7 @@ package com.javier.spring.model;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import java.util.Objects;
 
 public class Employee {
 
@@ -14,6 +15,8 @@ public class Employee {
     @Email // Tiene que tener formato email
     private String email;
     private String phoneNumber;
+    // Guardar la imagen
+    private String image;
 
     public Employee() {
     }
@@ -23,6 +26,14 @@ public class Employee {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+
+    public Employee(@Min(value = 0, message = "{empleado.id.mayorquecero}") long id, @NotEmpty String name, @Email String email, String phoneNumber, String image) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.image = image;
     }
 
     public long getId() {
@@ -57,50 +68,35 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + (int) (id ^ (id >>> 32));
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
-        return result;
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Employee other = (Employee) obj;
-        if (email == null) {
-            if (other.email != null)
-                return false;
-        } else if (!email.equals(other.email))
-            return false;
-        if (id != other.id)
-            return false;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (phoneNumber == null) {
-            if (other.phoneNumber != null)
-                return false;
-        } else if (!phoneNumber.equals(other.phoneNumber))
-            return false;
-        return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id && name.equals(employee.name) && email.equals(employee.email) && phoneNumber.equals(employee.phoneNumber) && image.equals(employee.image);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, email, phoneNumber, image);
     }
 
     @Override
     public String toString() {
-        return "Empleado [id=" + id + ", nombre=" + name + ", email=" + email + ", telefono=" + phoneNumber + "]";
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", image='" + image + '\'' +
+                '}';
     }
-
-
 }
