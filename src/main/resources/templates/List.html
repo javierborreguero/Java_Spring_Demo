@@ -14,7 +14,7 @@
     <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/css/starter-template.css" rel="stylesheet">
+    <link href="/css/Styles.css" rel="stylesheet">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -61,12 +61,12 @@
         			<th>Operaciones</th>
         	</thead>
         	<tbody>
-        		<tr th:each="empleado : ${listaEmpleados}">
-        			<td th:text="${empleado.id}">ID</td>
-        			<td th:text="${empleado.nombre}">Pepe Pérez</td>
-        			<td th:text="${empleado.email}">pepe.perez@openwebinars.net</td>
-        			<td th:text="${empleado.telefono}">954000000</td>
-        			<td><a th:href="@{/empleado/edit/{id}(id=${empleado.id})}">Editar</a></td>        		
+        		<tr th:each="employee : ${listaEmpleados}">
+        			<td th:text="${employee.id}">ID</td>
+        			<td th:text="${employee.name}">Pepe Pérez</td>
+        			<td th:text="${employee.email}">pepe.perez@openwebinars.net</td>
+        			<td th:text="${employee.phoneNumber}">954000000</td>
+        			<td><a th:href="@{/empleado/edit/{id}(id=${employee.id})}">Editar</a></td>
         		</tr>
         	</tbody>
         </table>

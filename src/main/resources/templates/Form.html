@@ -14,7 +14,7 @@
 <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="/css/starter-template.css" rel="stylesheet">
+<link href="/css/Styles.css" rel="stylesheet">
 
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -41,7 +41,7 @@
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="/">Inicio</a></li>
-					<li class="active"><a href="#">Nuevo empleado</a></li>
+					<li class="active"><a href="#">Nuevo employee</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -54,7 +54,7 @@
 			<div class="col-md-offset-2 col-md-8">
 				<form method="post" action="#" th:action="${empleadoForm.id != 0} ? @{/empleado/edit/submit} : @{/empleado/new/submit}"
 					th:object="${empleadoForm}">
-					<h1 th:text="${empleadoForm.id != 0} ? 'Editar empleado' : 'Nuevo empleado'">Nuevo empleado</h1>
+					<h1 th:text="${empleadoForm.id != 0} ? 'Editar empleado' : 'Nuevo empleado'">Nuevo employee</h1>
 					<div class="form-group"
 						th:classappend="${#fields.hasErrors('id')} ? 'has-error'">
 						<label for="id">ID</label> <input type="text"
@@ -68,7 +68,7 @@
 					<div class="form-group">
 						<label for="nombre">Nombre</label> <input type="text"
 							class="form-control" id="nombre" placeholder="Nombre"
-							th:field="*{nombre}" />
+							th:field="*{name}" />
 					</div>
 					<div class="form-group">
 						<label for="email">Email</label>
@@ -77,7 +77,7 @@
 					</div>
 					<div class="form-group">
 						<label for="telefono">Teléfono</label> <input type="tel"
-							class="form-control" id="telefono" placeholder="954000000" th:field="*{telefono}" />
+							class="form-control" id="telefono" placeholder="954000000" th:field="*{phoneNumber}" />
 
 					</div>
 					<button type="submit" class="btn btn-default">Enviar</button>
